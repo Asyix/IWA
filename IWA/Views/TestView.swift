@@ -8,13 +8,16 @@
 import SwiftUI
 
 struct TestView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+    @Environment(\.dismiss) var dismiss
+    
+    func printpath() {
+        print("path")
     }
-}
-
-struct TestView_Previews: PreviewProvider {
-    static var previews: some View {
-        TestView()
+    var body: some View {
+            Button() {
+                dismiss()
+            } label: {
+                Text("caca")
+            }.onAppear(perform: printpath)
     }
 }

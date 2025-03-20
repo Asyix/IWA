@@ -10,9 +10,18 @@ import SwiftUI
 import SwiftUI
 
 struct HomeView: View {
+    func action() -> Void {
+        print("caca")
+    }
     var body: some View {
-        Text("Page principale")
-            .font(.largeTitle)
-            .padding()
+        VStack {
+            Text("Page principale")
+                .font(.custom("Poppins-Black", size: 16))
+                .padding()
+            Button("Print Caca") {
+                action()
+            }
+            //AddButton()
+        }
     }
 }

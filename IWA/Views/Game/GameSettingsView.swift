@@ -8,5 +8,6 @@ struct GameSettingsView: View {
                 .padding()
         }
         .navigationTitle("Réglages Jeux")
+        .withNavigationBar()
     }
 }

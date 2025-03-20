@@ -8,5 +8,6 @@ struct GameDetailView: View {
                 .padding()
         }
         .navigationTitle("Détail du jeu")
+        .withNavigationBar()
     }
 }

@@ -20,12 +20,25 @@ struct JSONHelper {
         return try? encoder.encode(data)
     }
     
-    static func decode<T: Decodable>(data: Data) async -> T?{
+    static func decode<T: Decodable>(data: Data) async -> T? {
         let decoder: JSONDecoder = JSONDecoder()
-        guard let decoded: T = try? decoder.decode(T.self, from: data) else {
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        decoder.dateDecodingStrategy = .iso8601
+
+        
+        print("🔍 Début du décodage...")
+        print("📦 Taille des données reçues: \(data.count) octets")
+        
+        do {
+            let decoded: T = try decoder.decode(T.self, from: data)
+            print("✅ Décodage réussi : \(decoded)")
+            return decoded
+        } catch {
+            print("❌ Erreur de décodage : \(error.localizedDescription)")
+            print("📜 Données en texte brut : \(String(data: data, encoding: .utf8) ?? "Données non lisibles")")
             return nil
         }
-        return decoded
     }
+
 }
 

@@ -7,19 +7,18 @@
 
 import SwiftUI
 
-struct AddButton: View {
-    var action: () -> Void = {}
+struct AddButton<Destination: View>: View {
+    var destination: Destination
 
     var body: some View {
-        Button(action: self.action, label: {
+        NavigationLink(destination: destination) {
             Image(systemName: "plus")
                 .resizable()
                 .scaledToFit()
                 .frame(width: 25, height: 25)
                 .foregroundColor(.CPsecondary)
-                .padding(20)
-            
-        })
-        .buttonStyle(AddButtonStyle())
+                .padding(10)
+        }
+        .buttonStyle(ActionButtonStyle())
     }
 }

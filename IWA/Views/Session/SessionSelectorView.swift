@@ -17,22 +17,15 @@ struct SessionSelectorView: View {
                 items: sessionViewModel.sessions,
                 selectedItem: $sessionViewModel.selectedSession,
                 displayTransform: { session in
-                    if let session = session {
-                        return session == sessionViewModel.currentSession ? session.name + " - Active" : session.name
-                    } else {
-                        return "Aucune session"
-                    }
+                        session == sessionViewModel.currentSession ? session.name + " - Active" : session.name
                 }
             )
-            if let selectedSession = sessionViewModel.selectedSession {
-                // Info button
-                NavigationLink(destination: SessionView(session: selectedSession)) {
-                    Image(systemName: "info.circle")
-                        .foregroundColor(.blue)
-                }
-                .disabled(isOnSessionView)
+            // Info button
+            NavigationLink(destination: SessionView(sessionViewModel: sessionViewModel)) {
+                Image(systemName: "info.circle")
+                    .foregroundColor(.blue)
             }
-            
+            .disabled(isOnSessionView)
         }
         .padding(.horizontal)
         .background(

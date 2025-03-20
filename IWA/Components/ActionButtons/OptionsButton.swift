@@ -8,8 +8,18 @@
 import SwiftUI
 
 struct OptionsButton: View {
+    var action: () -> Void = {}
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Button(action: self.action, label: {
+            Image(systemName: "ellipsis")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 25, height: 25)
+                .foregroundColor(.CPsecondary)
+                .padding(20)
+            
+        })
+        .buttonStyle(OptionsButtonStyle())
     }
 }
 

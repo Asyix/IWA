@@ -7,14 +7,32 @@
 
 import SwiftUI
 
-struct SelectorView: View {
+struct SelectorView<T: Hashable>: View {
+    let items: [T]
+    @Binding var selectedItem: T
+    let displayTransform: (T) -> String // Permet de customiser l'affichage des éléments
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Menu {
+            ForEach(items, id: \.self) { item in
+                Button(action: {
+                    selectedItem = item
+                }) {
+                    Text(displayTransform(item))
+                }
+            }
+        } label: {
+            HStack {
+                Text(displayTransform(selectedItem))
+                    .foregroundColor(.blue)
+                Image(systemName: "chevron.down")
+                    .foregroundColor(.blue)
+            }
+            .padding()
+            .frame(maxWidth: .infinity) 
+            .background(Color.gray.opacity(0.2))
+            .cornerRadius(8)
+        }
     }
 }
 
-struct SelectorView_Previews: PreviewProvider {
-    static var previews: some View {
-        SelectorView()
-    }
-}

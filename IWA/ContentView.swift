@@ -7,15 +7,22 @@
 
 import SwiftUI
 
+import SwiftUI
+
 struct ContentView: View {
+    @EnvironmentObject var authManager: AuthManager
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        Group {
+            if authManager.isAuthenticated {
+                TabBar()
+                    .transition(.opacity)
+            } else {
+                LoginView()
+                    .transition(.opacity)
+            }
         }
-        .padding()
+        .animation(.easeInOut, value: authManager.isAuthenticated)
     }
 }
 

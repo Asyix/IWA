@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-struct Ac : ButtonStyle {
+struct ActionButtonStyle : ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .foregroundColor(.CPsecondary) // Icon color adapts
-            .background(Color.CPprimary.opacity(0.4)) // Background adapts
+            .background(Color.CPprimary.opacity(0.7)) // Background adapts
             .clipShape(Circle())
             .overlay(
                 Circle()

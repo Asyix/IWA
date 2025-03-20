@@ -8,13 +8,34 @@
 import SwiftUI
 
 struct DeleteButton: View {
+    @State var isShowingDialog : Bool = false
+    var title: String
+    var action: () -> Void = {}
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Button() {
+            isShowingDialog = true
+        } label: {
+            Image(systemName: "trash")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 25, height: 25)
+                .foregroundColor(.CPsecondary)
+                .padding(10)
+            
+        }
+        .buttonStyle(ActionButtonStyle())
+        .confirmationDialog(title, isPresented: $isShowingDialog, titleVisibility: .visible) {
+            Button("Confirmer", role: .destructive, action: action)
+            Button("Annuler", role: .cancel) {
+                isShowingDialog = false
+            }
+        }
     }
 }
 
 struct DeleteButton_Previews: PreviewProvider {
     static var previews: some View {
-        DeleteButton()
+        DeleteButton(title: "Etes vous sur de vouloir supprimer cette session ?")
     }
 }

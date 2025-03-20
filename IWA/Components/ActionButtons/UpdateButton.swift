@@ -7,14 +7,30 @@
 
 import SwiftUI
 
-struct UpdateButton: View {
+struct UpdateButton<Destination: View>: View {
+    var destination: Destination
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationLink(destination: destination) {
+            Image(systemName: "pencil")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 25, height: 25)
+                .foregroundColor(.CPsecondary)
+                .padding(10)
+        }
+        .buttonStyle(ActionButtonStyle())
     }
 }
 
+/*
 struct UpdateButton_Previews: PreviewProvider {
+    @State var path: NavigationPath = NavigationPath()
     static var previews: some View {
-        UpdateButton()
+        NavigationStack {
+            UpdateButton(destination: {
+                GamesView(path: $path)
+            }, path: $path)
+        }
     }
-}
+}*/
