@@ -16,48 +16,65 @@ struct DepositView: View {
     var body: some View {
         ZStack {
             ScrollView {
-                VStack {
-                    BluePurpleCard {
-                        VStack(alignment: .leading, spacing: 12) {
-                            HStack {
-                                Image(systemName: "person")
-                                Text(depositViewModel.name)
-                                    .font(.title2)
-                                    .bold()
-                            }
-
-                            Divider().overlay(Color.white)
-
-                            // Email, téléphone, adresse
-                            VStack(alignment: .leading, spacing: 8) {
-                                HStack {
-                                    Image(systemName: "envelope")
-                                    //Text(clientViewModel.email)
-                                }
-                                HStack {
-                                    Image(systemName: "phone")
-                                    //Text("N/A") // Remplace si tu as un champ phone plus tard
-                                }
-                                HStack {
-                                    Image(systemName: "mappin.and.ellipse")
-                                    //Text(clientViewModel.address)
+                VStack(spacing: 16) {
+                    WhiteCard {
+                        VStack(alignment: .leading) {
+                            Text("Titre du jeu : \(depositViewModel.name)")
+                                .font(.headline)
+                            
+                            if let photoURL = depositViewModel.photoURL {
+                                AsyncImage(url: photoURL) { image in
+                                    image.resizable()
+                                        .scaledToFill()
+                                        .frame(width: 100, height: 100)
+                                        .clipShape(Circle())
+                                } placeholder: {
+                                    ProgressView()
+                                        .progressViewStyle(CircularProgressViewStyle())
+                                        .frame(width: 100, height: 100)
                                 }
                             }
-                            .font(.body)
+                            
+                            Text("Prix de vente : €\(depositViewModel.salePrice, specifier: "%.2f")")
+                                .font(.subheadline)
+                            
+                            Text("Vendeur : \(depositViewModel.seller.name)")
+                                .font(.subheadline)
+                            
+                            Text("État de vente : \(depositViewModel.forSale ? "À la vente" : "Non disponible")")
+                                .font(.subheadline)
+                            
+                            Text("Statut de vente : \(depositViewModel.sold ? "Vendu" : "Non vendu")")
+                                .font(.subheadline)
+                            
+                            Text("Récupéré : \(depositViewModel.pickedUp ? "Oui" : "Non")")
+                                .font(.subheadline)
                         }
-                        .frame(maxWidth: .infinity, alignment: .leading)
                     }
-                    .padding(.top)
-                    .padding(.horizontal)
-                    .padding(.bottom, 4)
+                    
+                    if let errorMessage = errorMessage {
+                        Text(errorMessage)
+                            .foregroundColor(.red)
+                            .font(.poppins(fontStyle: .caption, fontWeight: .medium, isItalic: false))
+                            .padding()
+                    }
+                    
+                    // Bouton pour rediriger vers la page de modification
+                    NavigationLink(destination: UpdateDepositView(depositViewModel: depositViewModel)
+                                    .environmentObject(sessionViewModel)) {
+                        Text("Modifier")
+                            .font(.title3)
+                            .fontWeight(.bold)
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .background(Color.blue)
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
+                    }
+                    .padding()
                 }
-                    VStack(spacing: 12) {
-                        
-                    }
-                    .padding(.bottom, 50)
             }
             
-            // ne pas toucher
             VStack {
                 Spacer()
                 HStack {
@@ -67,7 +84,7 @@ struct DepositView: View {
                 .padding()
             }
         }
-        .navigationTitle("Détail client")
+        .navigationTitle("Détail dépôt")
         .withNavigationBar()
     }
 }

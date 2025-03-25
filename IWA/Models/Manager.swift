@@ -17,7 +17,7 @@ class Manager: ObservableObject, Identifiable, Hashable {
     @Published var address: String
     
     init(from dto: ManagerDTO) {
-        self.id = dto._id
+        self.id = dto.id
         self.firstName = dto.firstName
         self.lastName = dto.lastName
         self.email = dto.email
@@ -46,7 +46,7 @@ class Manager: ObservableObject, Identifiable, Hashable {
 }
 
 struct ManagerDTO: Codable {
-    var _id: String  // L'ID est généré par la base
+    var id: String  // L'ID est généré par la base
     var firstName: String
     var lastName: String
     var email: String

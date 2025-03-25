@@ -85,6 +85,9 @@ struct CreateManagerView: View {
                         TextField("Adresse Postale", text: $address)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                         
+                        TextField("Mot de passe", text: $password)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                        
                         
                     }
                 }

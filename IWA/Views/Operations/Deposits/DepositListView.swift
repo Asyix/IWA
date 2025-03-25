@@ -15,12 +15,15 @@ struct DepositListView: View {
         ZStack {
             ScrollView {
                 VStack(spacing: 8) {
-                                    ForEach(depositListViewModel.depositList) { deposit in
-                                        DepositRowView(deposit: deposit)
-                                    }
-                                }
-                                .padding(.top)
-               .padding(.top)
+                    ForEach(depositListViewModel.depositList) { deposit in
+                        // NavigationLink pour rediriger vers DepositView
+                        NavigationLink(destination: DepositView(depositViewModel: deposit)
+                                        .environmentObject(sessionViewModel)) {
+                            DepositRowView(deposit: deposit)
+                        }
+                    }
+                }
+                .padding(.top)
                
             
             }

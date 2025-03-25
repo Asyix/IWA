@@ -8,25 +8,24 @@
 import SwiftUI
 
 struct ManagerListView: View {
-    @StateObject var managerListViewModel : ManagerListViewModel
+    @StateObject var managerListViewModel: ManagerListViewModel
     @EnvironmentObject var sessionViewModel: SessionViewModel
-
+    
     var body: some View {
         ZStack {
             ScrollView {
                 VStack(spacing: 8) {
                     ForEach(managerListViewModel.managerList) { manager in
-                        //NavigationLink(destination: ManagerView(managerViewModel: manager)) {
-                            //manager row view
-                        //}
+                        NavigationLink(destination: ManagerView(managerViewModel: manager)
+                                        .environmentObject(sessionViewModel)) {
+                            ManagerRowView(manager: manager)
+                        }
                     }
                 }
                 .padding(.top)
             }
-
             
-            
-            //ne pas toucher
+            // Bouton superposé pour ajouter un manager
             VStack {
                 Spacer()
                 HStack {
@@ -45,10 +44,10 @@ struct ManagerListView: View {
         }
         .onChange(of: sessionViewModel.id) { newId in
             Task {
-                try await managerListViewModel.loadManangerInfos(sessionId: sessionViewModel.id)
+                try await managerListViewModel.loadManangerInfos(sessionId: newId)
             }
         }
     }
-    
 }
+    
 

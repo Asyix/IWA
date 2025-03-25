@@ -127,6 +127,7 @@
 		B78734192D92B8CD0005F478 /* RefundListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78734182D92B8CD0005F478 /* RefundListView.swift */; };
 		B787341B2D92B9B70005F478 /* CreateRefundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B787341A2D92B9B70005F478 /* CreateRefundView.swift */; };
 		B787341D2D9311630005F478 /* DepositRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B787341C2D9311630005F478 /* DepositRowView.swift */; };
+		B787341F2D9318E40005F478 /* ManagerRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B787341E2D9318E40005F478 /* ManagerRowView.swift */; };
 		B7C47C1B2D818DF100489C4E /* IWAApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C47C1A2D818DF100489C4E /* IWAApp.swift */; };
 		B7C47C1D2D818DF100489C4E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C47C1C2D818DF100489C4E /* ContentView.swift */; };
 		B7C47C1F2D818DF300489C4E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7C47C1E2D818DF300489C4E /* Assets.xcassets */; };
@@ -282,6 +283,7 @@
 		B78734182D92B8CD0005F478 /* RefundListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefundListView.swift; sourceTree = "<group>"; };
 		B787341A2D92B9B70005F478 /* CreateRefundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRefundView.swift; sourceTree = "<group>"; };
 		B787341C2D9311630005F478 /* DepositRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepositRowView.swift; sourceTree = "<group>"; };
+		B787341E2D9318E40005F478 /* ManagerRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerRowView.swift; sourceTree = "<group>"; };
 		B7C47C172D818DF100489C4E /* IWA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IWA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7C47C1A2D818DF100489C4E /* IWAApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IWAApp.swift; sourceTree = "<group>"; };
 		B7C47C1C2D818DF100489C4E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -749,6 +751,7 @@
 			isa = PBXGroup;
 			children = (
 				B78733FF2D92927B0005F478 /* ManagerListView.swift */,
+				B787341E2D9318E40005F478 /* ManagerRowView.swift */,
 				B78734082D92A2400005F478 /* CreateManagerView.swift */,
 				B787340A2D92B17E0005F478 /* ManagerView.swift */,
 				B787340D2D92B2050005F478 /* UpdateManagerView.swift */,
@@ -1031,6 +1034,7 @@
 				B78733CA2D90B7530005F478 /* UpdateClientView.swift in Sources */,
 				B787341D2D9311630005F478 /* DepositRowView.swift in Sources */,
 				B78733822D8C6D940005F478 /* ActionButtonStyle.swift in Sources */,
+				B787341F2D9318E40005F478 /* ManagerRowView.swift in Sources */,
 				B78733D12D915C920005F478 /* CreateTransactionView.swift in Sources */,
 				B78734102D92B3E10005F478 /* Refund.swift in Sources */,
 				B787332F2D85D8460005F478 /* Manager.swift in Sources */,
