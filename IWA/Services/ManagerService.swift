@@ -55,7 +55,7 @@ struct ManagerService {
     }
     
     static func create(createManagerDTO : CreateManagerDTO) async throws -> Manager {
-        let url = AppConfiguration.shared.apiURL + "/manager"
+        let url = AppConfiguration.shared.apiURL + "/manager/create"
         
         do {
             let data = try await RequestHelper.sendRequest(url: url, httpMethod: "POST", token: true, requestBody: createManagerDTO)
@@ -71,7 +71,7 @@ struct ManagerService {
     }
     
     static func updateManagerById(managerDTO : ManagerDTO) async throws -> Manager {
-        let url = AppConfiguration.shared.apiURL + "/manager/" + managerDTO._id
+        let url = AppConfiguration.shared.apiURL + "/manager/" + managerDTO.id
         do {
             let data = try await RequestHelper.sendRequest(url: url, httpMethod: "PUT", token: true, requestBody: managerDTO)
             guard let managerDTO : ManagerDTO = await JSONHelper.decode(data: data) else {
