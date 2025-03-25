@@ -16,9 +16,9 @@ struct RefundListView: View {
             ScrollView {
                 VStack(spacing: 8) {
                     ForEach(refundListViewModel.refundList) { refund in
-                        //NavigationLink(destination: RefundView(refundViewModel: refund)) {
-                            //refund row view
-                        //}
+                        RefundRowView(refundViewModel: refund) {
+
+                        }
                     }
                 }
                 .padding(.top)
@@ -36,6 +36,7 @@ struct RefundListView: View {
                 .padding()
             }
         }
+        .withNavigationBar()
         .navigationTitle("Remboursements")
         .onAppear {
             Task {
