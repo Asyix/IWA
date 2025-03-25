@@ -37,54 +37,54 @@ struct DepositRowView: View {
                     Spacer()
                 }
                 
-                
+                // Titre du jeu et prix
                 VStack(alignment: .leading) {
-                    // Titre du jeu
                     Text(deposit.name)
                         .font(.poppins(fontStyle: .title3, fontWeight: .semibold, isItalic: false))
                         .foregroundColor(.CPsecondary)
                     
-                    // Prix de vente
                     Text("Prix de vente : €\(deposit.salePrice, specifier: "%.2f")")
                         .font(.subheadline)
-                        .foregroundColor(.green)
-                    
-                    // Vendeur
+                        .padding(.bottom, 8)
+                }
+
+                // Informations du vendeur avec icône
+                HStack {
+                    Image(systemName: "person.fill")
+                        .foregroundColor(.blue)
                     Text("Vendeur : \(deposit.seller.name)")
                         .font(.poppins(fontStyle: .body, fontWeight: .regular, isItalic: false))
                         .foregroundColor(.CPsecondary)
                 }
-                
-                Spacer()
+                .padding(.bottom, 8)
+
+                // Disponibilité et état
                 VStack(alignment: .leading) {
                     HStack {
-                        Text("Disponibilité :")
-                            .font(.poppins(fontStyle: .body, fontWeight: .regular, isItalic: false))
-                            .foregroundColor(.CPsecondary)
-                        Text(deposit.forSale ? "À la vente" : "Non disponible")
+                        Image(systemName: "checkmark.circle.fill")
+                            .foregroundColor(deposit.forSale ? .green : .red)
+                        Text("Disponibilité : \(deposit.forSale ? "À la vente" : "Non disponible")")
                             .font(.subheadline)
                             .foregroundColor(deposit.forSale ? .green : .red)
                     }
                     
                     HStack {
-                        Text("État :")
-                            .font(.poppins(fontStyle: .body, fontWeight: .regular, isItalic: false))
-                            .foregroundColor(.CPsecondary)
-                        Text(deposit.sold ? "Vendu" : "Non vendu")
+                        Image(systemName: "tag.fill")
+                            .foregroundColor(deposit.sold ? .green : .red)
+                        Text("État : \(deposit.sold ? "Vendu" : "Non vendu")")
                             .font(.subheadline)
                             .foregroundColor(deposit.sold ? .green : .red)
                     }
                     
                     HStack {
-                        Text("Récupéré :")
-                            .font(.poppins(fontStyle: .body, fontWeight: .regular, isItalic: false))
-                            .foregroundColor(.CPsecondary)
-                        Text(deposit.pickedUp ? "Oui" : "Non")
+                        Image(systemName: "folder.fill")
+                            .foregroundColor(deposit.pickedUp ? .green : .red)
+                        Text("Récupéré : \(deposit.pickedUp ? "Oui" : "Non")")
                             .font(.subheadline)
                             .foregroundColor(deposit.pickedUp ? .green : .red)
                     }
                 }
-                
+                .padding(.top, 8)
             }
             .padding()
         }

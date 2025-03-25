@@ -31,7 +31,7 @@ struct GameService {
         
         do {
             let data = try await RequestHelper.sendRequest(url: url, httpMethod: "GET", token: false)
-            print("📥 Réponse brute : \(data)")
+            //print("📥 Réponse brute : \(data)")
             guard let gameDTOS : [GameDTO] = await JSONHelper.decode(data: data) else {
                 throw GameError.requestError(.invalidResponse)
             }

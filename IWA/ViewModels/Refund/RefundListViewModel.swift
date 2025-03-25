@@ -34,6 +34,7 @@ class RefundListViewModel: ObservableObject {
                 // Réutiliser les autres erreurs de RequestError
                 throw RefundError.otherError(requestError.localizedDescription)
             }
+            
         }
     }
     
@@ -44,10 +45,6 @@ class RefundListViewModel: ObservableObject {
             DispatchQueue.main.async {
                 self.sellerList = fetchedSellers
                 // Remise à zéro des compteurs
-                for index in self.refundList.indices {
-                    self.refundList[index].seller = Seller()
-                    self.refundList[index].manager = Manager()
-                }
                 // pour chaque refund
                 for refund in self.refundList {
                     //trouver le vendeur correspondant

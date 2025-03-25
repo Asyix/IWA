@@ -18,20 +18,26 @@ struct CreateRefundView: View {
     @State private var isLoading: Bool = false
     @State private var errorMessage: String?
     
-    private func createManager() async -> Bool {
+    init(refundListViewModel : RefundListViewModel) {
+        self.refundListViewModel = refundListViewModel
+        self._sellerId = State(initialValue: refundListViewModel.sellerList.first?.id ?? "")
+    }
+    
+    private func createRefund() async -> Bool {
         if [sellerId, refundAmount].contains(where: { $0.isEmpty }) {
             errorMessage = "Veuillez remplir tous les champs."
             return false
         }
+        
         guard let refundAmount = Double(self.refundAmount) else {
-            errorMessage = "Veuillez rentrer un numéro de téléphone à 10 chiffres."
+            errorMessage = "Veuillez entrer une valeur numérique valide."
             return false
         }
 
         isLoading = true
         errorMessage = nil
 
-        let createRefundDTO = CreateRefundDTO(sellerId: sellerId, sessionId: sessionViewModel.id, refundAmount: refundAmount, depositDate: JSONHelper.dateFormatter.string(from: Date()))
+        let createRefundDTO = CreateRefundDTO(sellerId: sellerId, sessionId: sessionViewModel.id, refundAmount: refundAmount, refundDate: JSONHelper.dateFormatter.string(from: Date()))
         do {
             try await refundListViewModel.create(createRefundDTO: createRefundDTO)
             isLoading = false
@@ -90,7 +96,7 @@ struct CreateRefundView: View {
                 
                 Button(action: {
                     Task {
-                        let success = await createManager()
+                        let success = await createRefund()
                         if success { dismiss() }
                     }
                     

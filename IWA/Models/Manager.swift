@@ -26,6 +26,16 @@ class Manager: ObservableObject, Identifiable, Hashable {
         self.admin = dto.admin
     }
     
+    init(from profiledto: ProfileDTO) {
+        self.id = profiledto._id
+        self.firstName = profiledto.firstName
+        self.lastName = profiledto.lastName
+        self.email = profiledto.email
+        self.phone = profiledto.phone
+        self.address = profiledto.address
+        self.admin = profiledto.admin
+    }
+    
     init() {
         self.id = "0"
         self.firstName = ""
@@ -47,6 +57,16 @@ class Manager: ObservableObject, Identifiable, Hashable {
 
 struct ManagerDTO: Codable {
     var id: String  // L'ID est généré par la base
+    var firstName: String
+    var lastName: String
+    var email: String
+    var phone: String
+    var address: String
+    var admin: Bool
+}
+
+struct ProfileDTO: Codable {
+    var _id: String  // L'ID est généré par la base
     var firstName: String
     var lastName: String
     var email: String

@@ -33,7 +33,7 @@ struct PaymentService {
         
         do {
             let data = try await RequestHelper.sendRequest(url: url, httpMethod: "GET", token: true)
-            print("📥 Réponse brute : \(data)")
+            //print("📥 Réponse brute : \(data)")
             guard let paymentDTOs : [PaymentDTO] = await JSONHelper.decode(data: data) else {
                 throw PaymentError.requestError(.invalidResponse)
             }

@@ -1,11 +1,8 @@
 import SwiftUI
 
 struct ProfileView: View {
-    @StateObject var managerViewModel: ManagerViewModel
-
-    init() {
-        _managerViewModel = StateObject(wrappedValue: ManagerViewModel(manager: managerService.getProfile()))
-    }
+    @ObservedObject var managerViewModel: ManagerViewModel
+    
     var body: some View {
         ZStack {
             ScrollView {
@@ -14,15 +11,15 @@ struct ProfileView: View {
                         VStack(alignment: .center) {
                             
                             // Vendeur
-                            Text("Nom : \(manager.lastName)")
+                            Text("Nom : \(managerViewModel.lastName)")
 
-                            Text("Prénom : \(manager.firstName)")
+                            Text("Prénom : \(managerViewModel.firstName)")
 
-                            Text("Email : \(manager.email)")
+                            Text("Email : \(managerViewModel.email)")
 
-                            Text("Téléphone : \(manager.phone)")
+                            Text("Téléphone : \(managerViewModel.phone)")
 
-                            Text("Adresse : \(manager.address)")
+                            Text("Adresse : \(managerViewModel.address)")
                             
                         }
                         .padding()

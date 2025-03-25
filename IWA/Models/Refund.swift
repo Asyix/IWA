@@ -7,7 +7,7 @@ class Refund: ObservableObject, Hashable {
     @Published var sessionId: String
     @Published var managerId: String
     @Published var refundAmount: Double
-    @Published var depositDate: Date
+    @Published var refundDate: Date
 
     // Initializer from RefundDTO
     init(from dto: RefundDTO) {
@@ -16,7 +16,7 @@ class Refund: ObservableObject, Hashable {
         self.sessionId = dto.sessionId
         self.managerId = dto.managerId
         self.refundAmount = dto.refundAmount
-        self.depositDate = JSONHelper.dateFormatter.date(from: dto.depositDate) ?? Date()
+        self.refundDate = JSONHelper.dateFormatter.date(from: dto.refundDate) ?? Date()
     }
     
     static func == (lhs: Refund, rhs: Refund) -> Bool {
@@ -35,7 +35,7 @@ struct RefundDTO: Codable {
     var sessionId: String
     var managerId: String
     var refundAmount: Double
-    var depositDate: String  // The date as a string, to be converted
+    var refundDate: String  // The date as a string, to be converted
 }
 
 // CreateRefundDTO - for creating a refund
@@ -43,7 +43,7 @@ struct CreateRefundDTO: Codable {
     var sellerId: String
     var sessionId: String
     var refundAmount: Double
-    var depositDate: String  // Date should be a string in the required format
+    var refundDate: String  // Date should be a string in the required format
 }
 
 // UpdateRefundDTO - for updating an existing refund
@@ -53,6 +53,6 @@ struct UpdateRefundDTO: Codable {
     var sessionId: String
     var managerId: String
     var refundAmount: Double
-    var depositDate: Date  // Date for update should be in Date format
+    var refundDate: Date  // Date for update should be in Date format
 }
 

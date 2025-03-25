@@ -8,20 +8,50 @@
 import SwiftUI
 
 enum SellerTab: String, CaseIterable {
-    case bilan = "Bilan"
     case deposited = "Jeux Déposés"
     case sold = "Jeux Vendus"
-    case info = "Informations"
+    
 }
 
 struct SellerView: View {
     @ObservedObject var sellerViewModel: SellerViewModel
-    @State private var selectedTab: SellerTab = .bilan
+    @State private var selectedTab: SellerTab = .deposited
     
     var body: some View {
         ZStack {
             ScrollView {
                 VStack {
+                    VStack {
+                        BluePurpleCard {
+                            VStack(alignment: .leading, spacing: 12) {
+                                HStack {
+                                    Image(systemName: "person")
+                                    Text(sellerViewModel.name)
+                                        .font(.title2)
+                                        .bold()
+                                }
+
+                                Divider().overlay(Color.white)
+
+                                // Email, téléphone, adresse
+                                VStack(alignment: .leading, spacing: 8) {
+                                    HStack {
+                                        Image(systemName: "envelope")
+                                        Text(sellerViewModel.email)
+                                    }
+                                    HStack {
+                                        Image(systemName: "phone")
+                                        Text(sellerViewModel.phone) 
+                                    }
+                                }
+                                .font(.body)
+                            }
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        }
+                        .padding(.top)
+                        .padding(.horizontal)
+                        .padding(.bottom, 4)
+                    }
                     Picker("Onglet", selection: $selectedTab) {
                         ForEach(SellerTab.allCases, id: \.self) { tab in
                             Text(tab.rawValue).tag(tab)
@@ -34,14 +64,10 @@ struct SellerView: View {
                     
                     // Affichage conditionnel des vues
                     switch selectedTab {
-                    case .info:
-                        SellerDetailView()
-                    case .bilan:
-                        SellerBilanView()
                     case .deposited:
-                        SellerDepositedGamesView()
+                        SellerDepositedGamesView(sellerViewModel : sellerViewModel)
                     case .sold:
-                        SellerSoldGamesView()
+                        SellerSoldGamesView(sellerViewModel : sellerViewModel)
                     }
                 }
             }

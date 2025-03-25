@@ -16,7 +16,7 @@ struct RefundRowView: View {
                 VStack(alignment: .center) {
                     
                     // Vendeur
-                    Text("Vendeur : \(refund.sellerId)")
+                    Text("Vendeur : \(refund.seller.name)")
 
                     Text("Montant : €\(refund.refundAmount, specifier: "%.2f")")
 
@@ -25,7 +25,6 @@ struct RefundRowView: View {
             }
             .padding()
         }
-        .withNavigationBar()
         .padding(.vertical, 8)
     }
 }

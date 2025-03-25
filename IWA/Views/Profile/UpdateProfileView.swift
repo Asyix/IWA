@@ -36,7 +36,7 @@ struct UpdateProfileView: View {
         isLoading = true
         errorMessage = nil
 
-        let managerDTO = ManagerDTO(_id: managerViewModel.id, firstName: firstName, lastName: lastName, email: email, phone: phone, address: address, admin: false)
+        let managerDTO = ManagerDTO(id: managerViewModel.id, firstName: firstName, lastName: lastName, email: email, phone: phone, address: address, admin: false)
         do {
             try await managerViewModel.updateManager(managerDTO: managerDTO)
             isLoading = false

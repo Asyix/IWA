@@ -34,12 +34,37 @@ struct ManagerService {
         
         do {
             let data = try await RequestHelper.sendRequest(url: url, httpMethod: "GET", token: true)
-            print("📥 Réponse brute : \(data)")
+            //print("📥 Réponse brute : \(data)")
             guard let managerDTOs : [ManagerDTO] = await JSONHelper.decode(data: data) else {
                 throw ManagerError.requestError(.invalidResponse)
             }
             let managers = managerDTOs.map { Manager(from: $0) }
             return managers
+        }
+        catch let requestError as RequestError {
+            // Transformer RequestError en LoginError
+            switch requestError {
+            case .notFoundError:
+                // Personnaliser le message pour les identifiants invalides
+                throw ManagerError.noManagersFound
+            default:
+                // Réutiliser les autres erreurs de RequestError
+                throw SellerError.otherError(requestError.localizedDescription)
+            }
+        }
+    }
+    
+    static func getProfile() async throws -> Manager {
+        let url = AppConfiguration.shared.apiURL + "/manager/profile"
+        
+        do {
+            let data = try await RequestHelper.sendRequest(url: url, httpMethod: "GET", token: true)
+            //print("📥 Réponse brute : \(data)")
+            guard let managerDTO : ProfileDTO = await JSONHelper.decode(data: data) else {
+                throw ManagerError.requestError(.invalidResponse)
+            }
+            let manager = Manager(from: managerDTO)
+            return manager
         }
         catch let requestError as RequestError {
             // Transformer RequestError en LoginError

@@ -14,6 +14,7 @@ struct TabBar: View {
     @StateObject var gameListViewModel: GameListViewModel = GameListViewModel()
     @StateObject var clientListViewModel: ClientListViewModel = ClientListViewModel()
     @StateObject var sellerListViewModel: SellerListViewModel = SellerListViewModel()
+    @StateObject var transactionListViewModel : TransactionListViewModel = TransactionListViewModel()
 
     var body: some View {
         
@@ -54,6 +55,7 @@ struct TabBar: View {
                     .environmentObject(sessionViewModel)
 
                 BilanView()
+                    
                     .tabItem {
                         Image(systemName: "chart.bar.fill")
                         Text("Bilan")
@@ -65,7 +67,6 @@ struct TabBar: View {
         .onAppear {
             Task {
                 await sessionViewModel.loadSessions()
-                let sessionId = sessionViewModel.id
                 Task {
                     try await gameListViewModel.loadGames()
                     try await gameListViewModel.loadDepositedGames(sessionId: sessionViewModel.id)
@@ -75,8 +76,6 @@ struct TabBar: View {
                     try await clientListViewModel.loadClientInfos(sessionId: sessionViewModel.id)
                 }
                 Task {
-                    print("fhfhhfhfhfhfhfh", sessionViewModel.id)
-                    print("gagagaga",sessionId)
                     try await sellerListViewModel.loadSellers()
                     try await sellerListViewModel.loadSellerInfos(sessionId: sessionViewModel.id)
                 }

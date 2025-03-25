@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PaymentListView: View {
-    @StateObject private var paymentListViewModel : PaymentListViewModel
+    @StateObject var paymentListViewModel : PaymentListViewModel
     @EnvironmentObject private var sessionViewModel: SessionViewModel
 
     var body: some View {
@@ -16,9 +16,7 @@ struct PaymentListView: View {
             ScrollView {
                 VStack(spacing: 8) {
                     ForEach(paymentListViewModel.paymentList) { payment in
-                        //NavigationLink(destination: PaymentView(paymentViewModel: payment)) {
-                            //payment row view
-                        //}
+                        PaymentRowView(payment: payment)
                     }
                 }
                 .padding(.top)

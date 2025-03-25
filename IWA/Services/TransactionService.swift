@@ -31,7 +31,7 @@ struct TransactionService {
         
         do {
             let data = try await RequestHelper.sendRequest(url: url, httpMethod: "GET", token: false)
-            print("📥 Réponse brute : \(data)")
+            //print("📥 Réponse brute : \(data)")
             guard let transactionDTOs : [TransactionDTO] = await JSONHelper.decode(data: data) else {
                 throw TransactionError.requestError(.invalidResponse)
             }

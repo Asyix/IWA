@@ -19,6 +19,7 @@ struct ManagerListView: View {
                         NavigationLink(destination: ManagerView(managerViewModel: manager)
                                         .environmentObject(sessionViewModel)) {
                             ManagerRowView(manager: manager)
+                                                .padding(.horizontal)
                         }
                     }
                 }

@@ -9,11 +9,11 @@ struct PaymentRowView: View {
                 VStack(alignment: .center) {
                     
                     // Vendeur
-                    Text("Vendeur : \(payment.sellerId)")
+                    Text("Vendeur : \(payment.seller.name)")
 
-                    Text("Montant : €\(refund.depositFeePayed, specifier: "%.2f")")
+                    Text("Montant : €\(payment.depositFeePayed, specifier: "%.2f")")
 
-                    Text("Date : \(refund.depositDate)")
+                    Text("Date : \(payment.depositDate)")
                 }
             }
             .padding()

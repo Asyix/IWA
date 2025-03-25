@@ -29,11 +29,11 @@ enum RefundError: Error {
 struct RefundService {
     
     static func getAllRefunds() async throws -> [Refund] {
-        let url = AppConfiguration.shared.apiURL + "/refund"
+        let url = AppConfiguration.shared.apiURL + "/refund/all"
         
         do {
             let data = try await RequestHelper.sendRequest(url: url, httpMethod: "GET", token: true)
-            print("📥 Réponse brute : \(data)")
+            //print("📥 Réponse brute : \(data)")
             guard let refundDTOs : [RefundDTO] = await JSONHelper.decode(data: data) else {
                 throw RefundError.requestError(.invalidResponse)
             }

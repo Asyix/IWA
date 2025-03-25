@@ -100,10 +100,8 @@
 		B78733DD2D9176F50005F478 /* ClientDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78733DC2D9176F50005F478 /* ClientDetailView.swift */; };
 		B78733DF2D9177240005F478 /* SellerDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78733DE2D9177240005F478 /* SellerDetailView.swift */; };
 		B78733E12D91773E0005F478 /* StatBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78733E02D91773E0005F478 /* StatBlock.swift */; };
-		B78733E32D9178730005F478 /* ClientBoughtGamesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78733E22D9178730005F478 /* ClientBoughtGamesView.swift */; };
 		B78733E52D91788F0005F478 /* SellerDepositedGamesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78733E42D91788F0005F478 /* SellerDepositedGamesView.swift */; };
 		B78733E72D9178AE0005F478 /* SellerSoldGamesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78733E62D9178AE0005F478 /* SellerSoldGamesView.swift */; };
-		B78733E92D9178F50005F478 /* SellerBilanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78733E82D9178F50005F478 /* SellerBilanView.swift */; };
 		B78733EB2D91984F0005F478 /* TransactionRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78733EA2D91984F0005F478 /* TransactionRowView.swift */; };
 		B78733ED2D91E6120005F478 /* Deposit.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78733EC2D91E6120005F478 /* Deposit.swift */; };
 		B78733EF2D91E61E0005F478 /* Recover.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78733EE2D91E61E0005F478 /* Recover.swift */; };
@@ -128,6 +126,15 @@
 		B787341B2D92B9B70005F478 /* CreateRefundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B787341A2D92B9B70005F478 /* CreateRefundView.swift */; };
 		B787341D2D9311630005F478 /* DepositRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B787341C2D9311630005F478 /* DepositRowView.swift */; };
 		B787341F2D9318E40005F478 /* ManagerRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B787341E2D9318E40005F478 /* ManagerRowView.swift */; };
+		B787342F2D9323570005F478 /* PaymentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B787342D2D9323570005F478 /* PaymentViewModel.swift */; };
+		B78734302D9323570005F478 /* PaymentListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B787342E2D9323570005F478 /* PaymentListViewModel.swift */; };
+		B78734322D9323680005F478 /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78734312D9323680005F478 /* Payment.swift */; };
+		B78734372D9323820005F478 /* CreatePaymentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78734342D9323820005F478 /* CreatePaymentView.swift */; };
+		B78734382D9323820005F478 /* PaymentRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78734352D9323820005F478 /* PaymentRowView.swift */; };
+		B78734392D9323820005F478 /* PaymentListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78734362D9323820005F478 /* PaymentListView.swift */; };
+		B787343B2D9323950005F478 /* UpdateProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B787343A2D9323950005F478 /* UpdateProfileView.swift */; };
+		B787343D2D9323B20005F478 /* RefundRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B787343C2D9323B20005F478 /* RefundRowView.swift */; };
+		B787343F2D9323C20005F478 /* PaymentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B787343E2D9323C20005F478 /* PaymentService.swift */; };
 		B7C47C1B2D818DF100489C4E /* IWAApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C47C1A2D818DF100489C4E /* IWAApp.swift */; };
 		B7C47C1D2D818DF100489C4E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C47C1C2D818DF100489C4E /* ContentView.swift */; };
 		B7C47C1F2D818DF300489C4E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7C47C1E2D818DF300489C4E /* Assets.xcassets */; };
@@ -256,10 +263,8 @@
 		B78733DC2D9176F50005F478 /* ClientDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientDetailView.swift; sourceTree = "<group>"; };
 		B78733DE2D9177240005F478 /* SellerDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellerDetailView.swift; sourceTree = "<group>"; };
 		B78733E02D91773E0005F478 /* StatBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatBlock.swift; sourceTree = "<group>"; };
-		B78733E22D9178730005F478 /* ClientBoughtGamesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientBoughtGamesView.swift; sourceTree = "<group>"; };
 		B78733E42D91788F0005F478 /* SellerDepositedGamesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellerDepositedGamesView.swift; sourceTree = "<group>"; };
 		B78733E62D9178AE0005F478 /* SellerSoldGamesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellerSoldGamesView.swift; sourceTree = "<group>"; };
-		B78733E82D9178F50005F478 /* SellerBilanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellerBilanView.swift; sourceTree = "<group>"; };
 		B78733EA2D91984F0005F478 /* TransactionRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionRowView.swift; sourceTree = "<group>"; };
 		B78733EC2D91E6120005F478 /* Deposit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deposit.swift; sourceTree = "<group>"; };
 		B78733EE2D91E61E0005F478 /* Recover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recover.swift; sourceTree = "<group>"; };
@@ -284,6 +289,15 @@
 		B787341A2D92B9B70005F478 /* CreateRefundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRefundView.swift; sourceTree = "<group>"; };
 		B787341C2D9311630005F478 /* DepositRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepositRowView.swift; sourceTree = "<group>"; };
 		B787341E2D9318E40005F478 /* ManagerRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerRowView.swift; sourceTree = "<group>"; };
+		B787342D2D9323570005F478 /* PaymentViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentViewModel.swift; sourceTree = "<group>"; };
+		B787342E2D9323570005F478 /* PaymentListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentListViewModel.swift; sourceTree = "<group>"; };
+		B78734312D9323680005F478 /* Payment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
+		B78734342D9323820005F478 /* CreatePaymentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePaymentView.swift; sourceTree = "<group>"; };
+		B78734352D9323820005F478 /* PaymentRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentRowView.swift; sourceTree = "<group>"; };
+		B78734362D9323820005F478 /* PaymentListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentListView.swift; sourceTree = "<group>"; };
+		B787343A2D9323950005F478 /* UpdateProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateProfileView.swift; sourceTree = "<group>"; };
+		B787343C2D9323B20005F478 /* RefundRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefundRowView.swift; sourceTree = "<group>"; };
+		B787343E2D9323C20005F478 /* PaymentService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentService.swift; sourceTree = "<group>"; };
 		B7C47C172D818DF100489C4E /* IWA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IWA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7C47C1A2D818DF100489C4E /* IWAApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IWAApp.swift; sourceTree = "<group>"; };
 		B7C47C1C2D818DF100489C4E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -331,6 +345,7 @@
 		B78732E02D82DD850005F478 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B78734332D9323820005F478 /* Payments */,
 				B78733FD2D9292510005F478 /* Admin */,
 				B78733682D8B18BF0005F478 /* Session */,
 				B78733572D888D1B0005F478 /* Profile */,
@@ -349,6 +364,7 @@
 		B78732E12D82DD930005F478 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B78734312D9323680005F478 /* Payment.swift */,
 				B787332E2D85D8460005F478 /* Manager.swift */,
 				B78733662D8ADFA90005F478 /* Session.swift */,
 				B787338A2D8D65440005F478 /* Game.swift */,
@@ -366,6 +382,7 @@
 		B78732E22D82DD990005F478 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				B787342C2D9323570005F478 /* Payment */,
 				B78734132D92B5C00005F478 /* Refund */,
 				B78734012D929B080005F478 /* Manager */,
 				B78733F22D91E80A0005F478 /* Deposit */,
@@ -406,7 +423,6 @@
 			isa = PBXGroup;
 			children = (
 				B7C47C502D8191EA00489C4E /* SellerListView.swift */,
-				B78733E82D9178F50005F478 /* SellerBilanView.swift */,
 				B78733E62D9178AE0005F478 /* SellerSoldGamesView.swift */,
 				B78733E42D91788F0005F478 /* SellerDepositedGamesView.swift */,
 				B78733B82D90A59F0005F478 /* CreateSellerView.swift */,
@@ -422,7 +438,6 @@
 			isa = PBXGroup;
 			children = (
 				B7C47C4C2D8191A200489C4E /* ClientListView.swift */,
-				B78733E22D9178730005F478 /* ClientBoughtGamesView.swift */,
 				B78733C02D90AD360005F478 /* CreateClientView.swift */,
 				B78733C72D90B7110005F478 /* ClientView.swift */,
 				B78733C92D90B7530005F478 /* UpdateClientView.swift */,
@@ -576,6 +591,7 @@
 		B78733432D8851D70005F478 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				B787343E2D9323C20005F478 /* PaymentService.swift */,
 				B78733442D8851F40005F478 /* LoginService.swift */,
 				B78733642D8977170005F478 /* SessionService.swift */,
 				B787338C2D8D6E3C0005F478 /* GameService.swift */,
@@ -618,6 +634,7 @@
 		B78733572D888D1B0005F478 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				B787343A2D9323950005F478 /* UpdateProfileView.swift */,
 				B78733502D888A6A0005F478 /* ProfileView.swift */,
 			);
 			path = Profile;
@@ -732,6 +749,7 @@
 		B78733CD2D90B8C80005F478 /* Refunds */ = {
 			isa = PBXGroup;
 			children = (
+				B787343C2D9323B20005F478 /* RefundRowView.swift */,
 				B78734182D92B8CD0005F478 /* RefundListView.swift */,
 				B787341A2D92B9B70005F478 /* CreateRefundView.swift */,
 			);
@@ -775,6 +793,26 @@
 				B78734162D92B6640005F478 /* RefundListViewModel.swift */,
 			);
 			path = Refund;
+			sourceTree = "<group>";
+		};
+		B787342C2D9323570005F478 /* Payment */ = {
+			isa = PBXGroup;
+			children = (
+				B787342D2D9323570005F478 /* PaymentViewModel.swift */,
+				B787342E2D9323570005F478 /* PaymentListViewModel.swift */,
+			);
+			path = Payment;
+			sourceTree = "<group>";
+		};
+		B78734332D9323820005F478 /* Payments */ = {
+			isa = PBXGroup;
+			children = (
+				B78734342D9323820005F478 /* CreatePaymentView.swift */,
+				B78734352D9323820005F478 /* PaymentRowView.swift */,
+				B78734362D9323820005F478 /* PaymentListView.swift */,
+			);
+			name = Payments;
+			path = Operations/Payments;
 			sourceTree = "<group>";
 		};
 		B7C47C0E2D818DF100489C4E = {
@@ -1003,8 +1041,10 @@
 				B78733F12D91E7D80005F478 /* DepositListView.swift in Sources */,
 				B78733A22D9076F90005F478 /* Seller.swift in Sources */,
 				B7C47C1D2D818DF100489C4E /* ContentView.swift in Sources */,
+				B78734302D9323570005F478 /* PaymentListViewModel.swift in Sources */,
 				B78734172D92B6640005F478 /* RefundListViewModel.swift in Sources */,
 				B7C47C512D8191EA00489C4E /* SellerListView.swift in Sources */,
+				B78734322D9323680005F478 /* Payment.swift in Sources */,
 				B78733B02D9082F20005F478 /* TransactionViewModel.swift in Sources */,
 				B78733A52D90791F0005F478 /* SellerViewModel.swift in Sources */,
 				B78733ED2D91E6120005F478 /* Deposit.swift in Sources */,
@@ -1028,6 +1068,7 @@
 				B78733D92D9175AD0005F478 /* BluePurpleCard.swift in Sources */,
 				B78733512D888A6A0005F478 /* ProfileView.swift in Sources */,
 				B78733612D8896DA0005F478 /* WithSessionSelectorModifier.swift in Sources */,
+				B78734382D9323820005F478 /* PaymentRowView.swift in Sources */,
 				B78734072D929D950005F478 /* ManagerListViewModel.swift in Sources */,
 				B787334B2D887DFC0005F478 /* GenericTextFieldStyle.swift in Sources */,
 				B78733C12D90AD360005F478 /* CreateClientView.swift in Sources */,
@@ -1040,6 +1081,7 @@
 				B787332F2D85D8460005F478 /* Manager.swift in Sources */,
 				B78733802D8C6CAF0005F478 /* OptionsButton.swift in Sources */,
 				B787333D2D86006F0005F478 /* Configuration.swift in Sources */,
+				B787343B2D9323950005F478 /* UpdateProfileView.swift in Sources */,
 				B78734122D92B4840005F478 /* RefundService.swift in Sources */,
 				B78733532D888A780005F478 /* SettingsView.swift in Sources */,
 				B787338B2D8D65440005F478 /* Game.swift in Sources */,
@@ -1062,11 +1104,12 @@
 				B78733E52D91788F0005F478 /* SellerDepositedGamesView.swift in Sources */,
 				B78733BB2D90A5B30005F478 /* UpdateSellerView.swift in Sources */,
 				B787336D2D8B31CE0005F478 /* FeeBlock.swift in Sources */,
+				B78734372D9323820005F478 /* CreatePaymentView.swift in Sources */,
 				B7C47C452D8190DD00489C4E /* TabItem.swift in Sources */,
 				B78733672D8ADFAA0005F478 /* Session.swift in Sources */,
 				B787337E2D8C62420005F478 /* TestView.swift in Sources */,
+				B787342F2D9323570005F478 /* PaymentViewModel.swift in Sources */,
 				B787339A2D8DCE660005F478 /* ScreenBounds.swift in Sources */,
-				B78733E32D9178730005F478 /* ClientBoughtGamesView.swift in Sources */,
 				B78733CF2D915C800005F478 /* TransactionListView.swift in Sources */,
 				B78733BF2D90ABDE0005F478 /* SellerView.swift in Sources */,
 				B787338D2D8D6E3C0005F478 /* GameService.swift in Sources */,
@@ -1078,12 +1121,14 @@
 				B78734092D92A2400005F478 /* CreateManagerView.swift in Sources */,
 				B78734152D92B5CF0005F478 /* RefundViewModel.swift in Sources */,
 				B787339C2D90161A0005F478 /* UpdateGameView.swift in Sources */,
+				B787343F2D9323C20005F478 /* PaymentService.swift in Sources */,
 				B78733FC2D928CD40005F478 /* UpdateDepositView.swift in Sources */,
 				B787334F2D888A350005F478 /* CreateGameView.swift in Sources */,
+				B787343D2D9323B20005F478 /* RefundRowView.swift in Sources */,
 				B7C47C492D81915500489C4E /* TabBar.swift in Sources */,
 				B787335F2D8892750005F478 /* SessionSelectorView.swift in Sources */,
 				B78733AD2D9081A50005F478 /* TransactionService.swift in Sources */,
-				B78733E92D9178F50005F478 /* SellerBilanView.swift in Sources */,
+				B78734392D9323820005F478 /* PaymentListView.swift in Sources */,
 				B78733A72D907A740005F478 /* SellerListViewModel.swift in Sources */,
 				B78733A92D907F430005F478 /* Transaction.swift in Sources */,
 				B78733062D8488540005F478 /* CustomFont.swift in Sources */,
@@ -1255,7 +1300,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"ASSETCATALOG_COMPILER_APPICON_NAME[sdk=iphoneos*]" = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"IWA/Preview Content\"";
@@ -1284,6 +1331,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"IWA/Preview Content\"";

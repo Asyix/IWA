@@ -34,7 +34,7 @@ struct DepositedGameService {
         
         do {
             let data = try await RequestHelper.sendRequest(url: url, httpMethod: "GET", token: false)
-            print("📥 Réponse brute : \(data)")
+            //print("📥 Réponse brute : \(data)")
             guard let depositedGameDTOS : [DepositedGameDTO] = await JSONHelper.decode(data: data) else {
                 throw DepositedGameError.requestError(.invalidResponse)
             }

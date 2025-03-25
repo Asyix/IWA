@@ -15,6 +15,11 @@ struct CreatePaymentView: View {
     @State var sellerId: String = ""
     @State var depositFeePayed: String = ""
     
+    init(paymentListViewModel : PaymentListViewModel) {
+        self.paymentListViewModel = paymentListViewModel
+        self._sellerId = State(initialValue: paymentListViewModel.sellerList.first?.id ?? "")
+    }
+    
     @State private var isLoading: Bool = false
     @State private var errorMessage: String?
     

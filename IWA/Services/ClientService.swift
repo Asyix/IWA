@@ -31,7 +31,7 @@ struct ClientService {
         
         do {
             let data = try await RequestHelper.sendRequest(url: url, httpMethod: "GET", token: false)
-            print("📥 Réponse brute : \(data)")
+            //print("📥 Réponse brute : \(data)")
             guard let clientDTOs : [ClientDTO] = await JSONHelper.decode(data: data) else {
                 throw ClientError.requestError(.invalidResponse)
             }

@@ -10,7 +10,7 @@ class Payment: ObservableObject, Hashable {
     @Published var depositDate: Date
 
     // Initializer from RefundDTO
-    init(from dto: RefundDTO) {
+    init(from dto: PaymentDTO) {
         self.id = dto._id
         self.sellerId = dto.sellerId
         self.sessionId = dto.sessionId
@@ -19,7 +19,7 @@ class Payment: ObservableObject, Hashable {
         self.depositDate = JSONHelper.dateFormatter.date(from: dto.depositDate) ?? Date()
     }
     
-    static func == (lhs: Refund, rhs: Refund) -> Bool {
+    static func == (lhs: Payment, rhs: Payment) -> Bool {
         return lhs.id == rhs.id
     }
     

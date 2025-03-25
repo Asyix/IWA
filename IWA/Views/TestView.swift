@@ -17,7 +17,7 @@ struct TestView: View {
             Button() {
                 dismiss()
             } label: {
-                Text("caca")
+                Text("x")
             }.onAppear(perform: printpath)
     }
 }

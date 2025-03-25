@@ -91,6 +91,15 @@ class TransactionListViewModel: ObservableObject {
         }
     }
     
+    // Calcul du total généré par la vente des jeux (somme des salePrice)
+    func totalGeneratedRevenue() -> Double {
+        var total: Double = 0
+        for transaction in transactionList {
+            total += transaction.depositedGame.salePrice
+        }
+        return total
+    }
+    
     func create(createTransactionDTO : CreateTransactionDTO, sessionId: String) async throws {
         do {
             let newTransaction = try await TransactionService.create(createTransactionDTO: createTransactionDTO)

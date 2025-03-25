@@ -42,7 +42,7 @@ struct ClientView: View {
                                 }
                                 HStack {
                                     Image(systemName: "phone")
-                                    Text("N/A") // Remplace si tu as un champ phone plus tard
+                                    Text(clientViewModel.phone) // Remplace si tu as un champ phone plus tard
                                 }
                                 HStack {
                                     Image(systemName: "mappin.and.ellipse")
@@ -145,7 +145,7 @@ struct ClientView: View {
         .onChange(of: sessionViewModel.selectedSession.id) { newId in
             Task {
                 await loadClientInfos(sessionId: newId)
-                print(clientViewModel.clientTransactions)
+                //print(clientViewModel.clientTransactions)
             }
         }
     }

@@ -1,24 +1,23 @@
 //
-//  RefundListView.swift
+//  TransactionListView.swift
 //  IWA
 //
-//  Created by etud on 25/03/2025.
+//  Created by etud on 24/03/2025.
 //
 
+import Foundation
 import SwiftUI
 
 struct RefundListView: View {
-    @StateObject private var refundListViewModel : RefundListViewModel
-    @EnvironmentObject private var sessionViewModel: SessionViewModel
+    @StateObject var refundListViewModel : RefundListViewModel
+    @EnvironmentObject var sessionViewModel: SessionViewModel
 
     var body: some View {
         ZStack {
             ScrollView {
                 VStack(spacing: 8) {
                     ForEach(refundListViewModel.refundList) { refund in
-                        RefundRowView(refundViewModel: refund) {
-
-                        }
+                        RefundRowView(refund: refund) // Ajout de TransactionRowView pour chaque transaction
                     }
                 }
                 .padding(.top)
@@ -31,20 +30,16 @@ struct RefundListView: View {
                 Spacer()
                 HStack {
                     Spacer()
-                    AddButton(destination: CreateRefundView(refundListViewModel: refundListViewModel).environmentObject(sessionViewModel))
+                    AddButton(destination: CreateRefundView(refundListViewModel: refundListViewModel)
+                        .environmentObject(sessionViewModel))
                 }
                 .padding()
             }
         }
+        .navigationTitle("Ventes")
         .withNavigationBar()
-        .navigationTitle("Remboursements")
+        .withSessionSelector(sessionViewModel: sessionViewModel)
         .onAppear {
-            Task {
-                try await refundListViewModel.loadRefunds(sessionId: sessionViewModel.id)
-                try await refundListViewModel.loadRefundInfos(sessionId: sessionViewModel.id)
-            }
-        }
-        .onChange(of: sessionViewModel.id) { newId in
             Task {
                 try await refundListViewModel.loadRefunds(sessionId: sessionViewModel.id)
                 try await refundListViewModel.loadRefundInfos(sessionId: sessionViewModel.id)

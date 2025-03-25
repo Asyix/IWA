@@ -62,7 +62,7 @@ struct RequestHelper {
             guard let httpResponse = response as? HTTPURLResponse else {
                 throw RequestError.invalidResponse
             }
-            print(httpResponse.statusCode)
+            //print(httpResponse.statusCode)
             switch httpResponse.statusCode {
             case 200, 201:
                 // Succès : retourner les données et la réponse
@@ -100,7 +100,7 @@ struct RequestHelper {
             guard let httpResponse = response as? HTTPURLResponse else {
                 throw RequestError.invalidResponse
             }
-            print(httpResponse.statusCode)
+            //print(httpResponse.statusCode)
             switch httpResponse.statusCode {
             case 201:
                 // Succès : retourner les données et la réponse

@@ -32,7 +32,7 @@ struct SellerService {
         
         do {
             let data = try await RequestHelper.sendRequest(url: url, httpMethod: "GET", token: false)
-            print("📥 Réponse brute : \(data)")
+            //print("📥 Réponse brute : \(data)")
             guard let sellerDTOs : [SellerDTO] = await JSONHelper.decode(data: data) else {
                 throw SellerError.requestError(.invalidResponse)
             }

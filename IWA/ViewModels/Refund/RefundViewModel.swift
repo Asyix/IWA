@@ -40,9 +40,9 @@ class RefundViewModel: ObservableObject, Equatable, Hashable, Identifiable {
         set { refund.refundAmount = newValue; objectWillChange.send() }
     }
     
-    var depositDate: Date {
-        get { refund.depositDate }
-        set { refund.depositDate = newValue; objectWillChange.send() }
+    var refundDate: Date {
+        get { refund.refundDate }
+        set { refund.refundDate = newValue; objectWillChange.send() }
     }
     
     static func == (lhs: RefundViewModel, rhs: RefundViewModel) -> Bool {
@@ -62,7 +62,7 @@ class RefundViewModel: ObservableObject, Equatable, Hashable, Identifiable {
             DispatchQueue.main.async {
                 if updatedRefund.id == self.id {
                     self.refundAmount = updatedRefund.refundAmount
-                    self.depositDate = updatedRefund.depositDate
+                    self.refundDate = updatedRefund.refundDate
                     self.sellerId = updatedRefund.sellerId
                     self.sessionId = updatedRefund.sessionId
                     self.managerId = updatedRefund.managerId
