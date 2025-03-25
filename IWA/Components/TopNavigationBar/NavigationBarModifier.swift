@@ -10,6 +10,8 @@ import SwiftUI
 
 struct NavigationBarModifier: ViewModifier {
     @EnvironmentObject var authManager: AuthManager
+    @StateObject var managerListViewModel: ManagerListViewModel = ManagerListViewModel()
+    @EnvironmentObject var sessionViewModel: SessionViewModel
     func body(content: Content) -> some View {
         content
             .toolbar {
@@ -29,13 +31,17 @@ struct NavigationBarModifier: ViewModifier {
                     }
                 }
                 
-                // Bouton Paramètres
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    NavigationLink(destination: SettingsView()) {
-                        Image(systemName: "gearshape")
-                            .foregroundColor(.gray)
+                if authManager.isAdmin {
+                    // Bouton admin
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        NavigationLink(destination: ManagerListView(managerListViewModel: managerListViewModel).environmentObject(sessionViewModel)) {
+                            Text("Admin")
+                                .foregroundColor(.gray)
+                                .font(.poppins(fontStyle: .body, fontWeight: .regular, isItalic: false))
+                        }
                     }
                 }
+                
             }
             .navigationBarTitleDisplayMode(.inline) // Centrer le titre en petit
     }

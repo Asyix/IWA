@@ -11,18 +11,23 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var authManager: AuthManager
+    @EnvironmentObject var sessionViewModel: SessionViewModel
     
     var body: some View {
-        Group {
-            if authManager.isAuthenticated {
-                TabBar()
-                    .transition(.opacity)
-            } else {
-                LoginView()
-                    .transition(.opacity)
+        NavigationView {
+            Group {
+                if authManager.isAuthenticated {
+                    TabBar()
+                        .transition(.opacity)
+                        .environmentObject(sessionViewModel)
+                } else {
+                    LoginView()
+                        .transition(.opacity)
+                }
             }
+            .animation(.easeInOut, value: authManager.isAuthenticated)
         }
-        .animation(.easeInOut, value: authManager.isAuthenticated)
+        
     }
 }
 

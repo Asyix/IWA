@@ -40,23 +40,37 @@ struct UpdateSessionView: View {
     @State private var isLoading: Bool = false
     @State private var errorMessage: String?
     
-    private func updateSession() async {
+    private func updateSession() async -> Bool {
+        if [name, location, depositFee, depositFeeLimitBeforeDiscount, depositFeeDiscount, saleComission].contains(where: { $0.isEmpty }) {
+            errorMessage = "Veuillez remplir tous les champs."
+            return false
+        }
             guard let depositFeeValue = Double(depositFee),
                   let depositFeeLimit = Double(depositFeeLimitBeforeDiscount),
                   let depositFeeDisc = Double(depositFeeDiscount),
                   let saleComm = Double(saleComission) else {
                 errorMessage = "Veuillez entrer des valeurs numériques valides pour les frais."
-                return
+                return false
             }
 
             isLoading = true
             errorMessage = nil
             
             do {
-                await sessionViewModel.update(name: name, location: location, description: description.isEmpty ? description : nil, startDate: startDate, endDate: endDate, depositFee: depositFeeValue, depositFeeLimitBeforeDiscount: depositFeeLimit, depositFeeDiscount: depositFeeDisc, saleComission: saleComm)  // Persist changes to the backend
+                try await sessionViewModel.update(name: name, location: location, description: description.isEmpty ? description : nil, startDate: startDate, endDate: endDate, depositFee: depositFeeValue, depositFeeLimitBeforeDiscount: depositFeeLimit, depositFeeDiscount: depositFeeDisc, saleComission: saleComm)  // Persist changes to the backend
+                isLoading = false
+                return true
             }
-            
-            isLoading = false
+            catch let sessionError as SessionError {
+                errorMessage = sessionError.message
+                isLoading = false
+                return false
+            }
+            catch {
+                errorMessage = "Une erreur s'est produite"
+                isLoading = false
+                return false
+            }
         }
     
     var body: some View {
@@ -71,10 +85,7 @@ struct UpdateSessionView: View {
                     VStack(spacing: 12) {
                         TextField("Titre de la session", text: $name)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
-                        
-                        TextField("Description (optionnelle)", text: $description)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                        
+                                                
                         TextField("Localisation", text: $location)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                         
@@ -104,6 +115,12 @@ struct UpdateSessionView: View {
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                             .keyboardType(.decimalPad)
                     }
+                }
+                
+                WhiteCard {
+                    Text("Description")
+                    TextEditor(text: $description)
+                            .frame(minHeight: 100)
                 }
                 
                 if let errorMessage = errorMessage {

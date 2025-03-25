@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SessionView: View {
     @Environment(\.dismiss) var dismiss
-    @ObservedObject var sessionViewModel : SessionViewModel
+    @StateObject var sessionViewModel : SessionViewModel
     @State var showOptions : Bool = false
     
     private func toggleOptions() {
@@ -111,7 +111,7 @@ struct SessionView: View {
         }
         .navigationTitle("\(sessionViewModel.name)")
         .withNavigationBar()
-        .withSessionSelector(isOnSessionView: true)
+        .withSessionSelector(sessionViewModel: sessionViewModel, isOnSessionView: true)
         
     }
     

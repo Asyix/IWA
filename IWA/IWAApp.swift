@@ -10,11 +10,12 @@ import SwiftUI
 @main
 struct IWAApp: App {
     @StateObject private var authManager = AuthManager.shared
-    @StateObject private var sessionViewModel = SessionViewModel() // Ajout du SessionManager
+    @StateObject private var sessionViewModel = SessionViewModel()
 
     @Environment(\.scenePhase) private var scenePhase // Écoute les changements d'état de l'application
 
     var body: some Scene {
+        
         WindowGroup {
             ContentView()
                 .environmentObject(authManager)

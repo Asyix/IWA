@@ -11,27 +11,49 @@ import SwiftUI
 
 class SessionViewModel: ObservableObject {
     @Published var currentSession: Session?
-    @Published var selectedSession: Session
+    @Published var selectedSession: Session = Session(from: SessionDTO(_id: "0", name: "Aucune Session", location: "N/A", startDate: "N/A", endDate: "N/A", depositFee: 0.0, depositFeeLimitBeforeDiscount: 0.0, depositFeeDiscount: 0.0, saleComission: 0.0, managerId: "0"))
     @Published var sessions: [Session] = []
     
     var id: String { selectedSession.id }
-    var name: String { selectedSession.name }
-    var location: String { selectedSession.location }
-    var startDate: Date { selectedSession.startDate }
-    var endDate: Date { selectedSession.endDate }
-    var description: String? { selectedSession.description }
-    var depositFee: Double { selectedSession.depositFee }
-    var depositFeeLimitBeforeDiscount: Double { selectedSession.depositFeeLimitBeforeDiscount }
-    var depositFeeDiscount: Double { selectedSession.depositFeeDiscount }
-    var saleComission: Double { selectedSession.saleComission }
-    var managerId: String { selectedSession.managerId }
-    
-    
-    init() {
-        self.selectedSession = Session(from: SessionDTO(_id: "0", name: "Aucune Session", location: "N/A", startDate: "N/A", endDate: "N/A", depositFee: 0.0, depositFeeLimitBeforeDiscount: 0.0, depositFeeDiscount: 0.0, saleComission: 0.0, managerId: "0"))
-        Task {
-            await loadSessions()
-        }
+    var name: String {
+        get { selectedSession.name }
+        set { selectedSession.name = newValue; objectWillChange.send() }
+    }
+    var location: String {
+        get { selectedSession.location }
+        set { selectedSession.location = newValue; objectWillChange.send() }
+    }
+    var startDate: Date {
+        get { selectedSession.startDate }
+        set { selectedSession.startDate = newValue; objectWillChange.send() }
+    }
+    var endDate: Date {
+        get { selectedSession.endDate }
+        set { selectedSession.endDate = newValue; objectWillChange.send() }
+    }
+    var description: String? {
+        get { selectedSession.description }
+        set { selectedSession.description = newValue; objectWillChange.send() }
+    }
+    var depositFee: Double {
+        get { selectedSession.depositFee }
+        set { selectedSession.depositFee = newValue; objectWillChange.send() }
+    }
+    var depositFeeLimitBeforeDiscount: Double {
+        get { selectedSession.depositFeeLimitBeforeDiscount }
+        set { selectedSession.depositFeeLimitBeforeDiscount = newValue; objectWillChange.send() }
+    }
+    var depositFeeDiscount: Double {
+        get { selectedSession.depositFeeDiscount }
+        set { selectedSession.depositFeeDiscount = newValue; objectWillChange.send() }
+    }
+    var saleComission: Double {
+        get { selectedSession.saleComission }
+        set { selectedSession.saleComission = newValue; objectWillChange.send() }
+    }
+    var managerId: String {
+        get { selectedSession.managerId }
+        set { selectedSession.managerId = newValue; objectWillChange.send() }
     }
     
     func loadSessions() async {
@@ -62,7 +84,7 @@ class SessionViewModel: ObservableObject {
         selectedSession = session
     }
     
-    func create(createSessionDto : CreateSessionDTO) async {
+    func create(createSessionDto : CreateSessionDTO) async throws {
         do {
             let newSession = try await SessionService.create(createSessionDto: createSessionDto)
             DispatchQueue.main.async {
@@ -70,12 +92,12 @@ class SessionViewModel: ObservableObject {
                 self.sessions.sort { $0.startDate > $1.startDate } // Sorts sessions in descending order by date (most recent first)
             }
         }
-        catch {
-            print("Erreur : \(error)")
+        catch let requestError as RequestError {
+            throw SessionError.requestError(requestError) // Pass the caught RequestError
         }
     }
     
-    func update(name: String, location: String, description: String?, startDate: Date, endDate: Date, depositFee: Double, depositFeeLimitBeforeDiscount: Double, depositFeeDiscount: Double, saleComission: Double) async {
+    func update(name: String, location: String, description: String?, startDate: Date, endDate: Date, depositFee: Double, depositFeeLimitBeforeDiscount: Double, depositFeeDiscount: Double, saleComission: Double) async throws {
         do {
             let updateSessionDto = UpdateSessionDTO(id: selectedSession.id, name: name, location: location, startDate: startDate, endDate: endDate, depositFee: depositFee, depositFeeLimitBeforeDiscount: depositFeeLimitBeforeDiscount, depositFeeDiscount: depositFeeDiscount, saleComission: saleComission)
             let updatedSession = try await SessionService.updateSessionById(updateSessionDto: updateSessionDto)
@@ -89,8 +111,8 @@ class SessionViewModel: ObservableObject {
                 }
             }
         }
-        catch {
-            print("Erreur : \(error)")
+        catch let requestError as RequestError {
+            throw SessionError.requestError(requestError) // Pass the caught RequestError
         }
     }
     

@@ -64,10 +64,7 @@ struct RequestHelper {
             }
             print(httpResponse.statusCode)
             switch httpResponse.statusCode {
-            case 201:
-                // Succès : retourner les données et la réponse
-                return data
-            case 200:
+            case 200, 201:
                 // Succès : retourner les données et la réponse
                 return data
             case 401:

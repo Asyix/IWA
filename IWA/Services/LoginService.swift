@@ -26,6 +26,7 @@ enum LoginError: Error {
 
 struct LoginResponse: Decodable {
     var token: String
+    var isAdmin: Bool
 }
 
 struct LoginService {
@@ -38,11 +39,11 @@ struct LoginService {
                 DispatchQueue.main.async {
                     KeychainHelper.shared.saveToken(decoded.token)
                     AuthManager.shared.isAuthenticated = true
+                    AuthManager.shared.isAdmin = decoded.isAdmin
                 }
             }
         }
         catch let requestError as RequestError {
-            print(requestError)
             // Transformer RequestError en LoginError
             switch requestError {
             case .unauthorizedError:

@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct CreateSessionView: View {
-    @ObservedObject var sessionViewModel : SessionViewModel
+    @StateObject var sessionViewModel : SessionViewModel
     @Environment(\.dismiss) var dismiss
     @State private var name: String = ""
     @State private var description: String = ""
@@ -24,13 +24,17 @@ struct CreateSessionView: View {
     @State private var isLoading: Bool = false
     @State private var errorMessage: String?
     
-    private func createSession() async {
+    private func createSession() async -> Bool {
+        if [name, location, depositFee, depositFeeLimitBeforeDiscount, depositFeeDiscount, saleComission].contains(where: { $0.isEmpty }) {
+            errorMessage = "Veuillez remplir tous les champs."
+            return false
+        }
         guard let depositFeeLimit = Double(depositFeeLimitBeforeDiscount),
               let depositFeeDisc = Double(depositFeeDiscount),
               let saleComm = Double(saleComission),
               let depositFee = Double(depositFee) else {
             errorMessage = "Veuillez entrer des valeurs numériques valides pour les frais."
-            return
+            return false
         }
 
         isLoading = true
@@ -40,18 +44,31 @@ struct CreateSessionView: View {
             name: name,
             location: location,
             description: description.isEmpty ? nil : description,
-            startDate: Session.dateFormatter.string(from: startDate),
-            endDate: Session.dateFormatter.string(from: endDate),
+            startDate: JSONHelper.dateFormatter.string(from: startDate),
+            endDate: JSONHelper.dateFormatter.string(from: endDate),
             depositFee: depositFee,
             depositFeeLimitBeforeDiscount: depositFeeLimit,
             depositFeeDiscount: depositFeeDisc,
             saleComission: saleComm
         )
         do {
-            await sessionViewModel.create(createSessionDto: createSessionDTO)
+            try await sessionViewModel.create(createSessionDto: createSessionDTO)
+            isLoading = false
+            return true
+        }
+        catch let sessionError as SessionError {
+            errorMessage = sessionError.message
+            isLoading = false
+            return false
+        }
+        catch {
+            errorMessage = "Une erreur s'est produite"
+            isLoading = false
+            return false
         }
         
-        isLoading = false
+        
+        
     }
     
     var body: some View {
@@ -65,9 +82,6 @@ struct CreateSessionView: View {
                     
                     VStack(spacing: 12) {
                         TextField("Titre de la session", text: $name)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                        
-                        TextField("Description (optionnelle)", text: $description)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                         
                         TextField("Localisation", text: $location)
@@ -101,6 +115,12 @@ struct CreateSessionView: View {
                     }
                 }
                 
+                WhiteCard {
+                    Text("Description (optionnelle)")
+                    TextEditor(text: $description)
+                            .frame(minHeight: 100)
+                }
+                
                 if let errorMessage = errorMessage {
                     Text(errorMessage)
                         .foregroundColor(.red)
@@ -110,9 +130,9 @@ struct CreateSessionView: View {
                 
                 Button(action: {
                     Task {
-                        await createSession()
+                        let sucess = await createSession()
+                        if sucess { dismiss() }
                     }
-                    dismiss()
                 }) {
                     if isLoading {
                         ProgressView()

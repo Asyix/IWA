@@ -11,6 +11,7 @@ import SwiftUI
 class AuthManager: ObservableObject {
     static let shared = AuthManager()
     @Published var isAuthenticated = false
+    @Published var isAdmin = false
 
     private init() {
         // Vérifie si un token existe déjà au démarrage
@@ -24,5 +25,6 @@ class AuthManager: ObservableObject {
         
         // Met à jour l'état d'authentification
         isAuthenticated = false
+        isAdmin = false
     }
 }

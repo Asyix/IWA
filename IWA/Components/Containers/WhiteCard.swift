@@ -18,11 +18,12 @@ struct WhiteCard<Content: View>: View {
         VStack {
             content
         }
-        .padding()
-        .background(Color.BGPrimary)
+        .padding(10)
+        .background(Color("BGSecondary"))
         .cornerRadius(12)
         .shadow(color: .gray.opacity(0.2), radius: 5, x: 0, y: 3)
-        .padding(.horizontal)
+        .padding(.horizontal, 8)
+        .frame(maxWidth: .infinity)
     }
 }
 

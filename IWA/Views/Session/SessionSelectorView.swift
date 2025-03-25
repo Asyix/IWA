@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SessionSelectorView: View {
-    @EnvironmentObject var sessionViewModel: SessionViewModel
+    @StateObject var sessionViewModel: SessionViewModel
     @State var isOnSessionView : Bool = false
 
     var body: some View {

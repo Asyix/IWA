@@ -39,6 +39,13 @@ struct JSONHelper {
             return nil
         }
     }
+    
+    // Convertisseur ISO 8601
+    static let dateFormatter: ISO8601DateFormatter = {
+        let formatter = ISO8601DateFormatter()
+        formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds] // Supporte les millisecondes
+        return formatter
+    }()
 
 }
 

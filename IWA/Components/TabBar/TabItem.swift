@@ -4,7 +4,7 @@
 //
 //  Created by etud on 12/03/2025.
 //
-
+/*
 import Foundation
 import SwiftUI
 
@@ -30,7 +30,7 @@ enum TabItem: String, CaseIterable, Identifiable {
     @ViewBuilder
     var view: some View {
         switch self {
-        case .games: GamesView()
+        case .games: GameListView()
         case .clients: ClientsView()
         case .home: HomeView()
         case .sellers: SellersView()
@@ -47,4 +47,4 @@ enum TabItem: String, CaseIterable, Identifiable {
         case .bilan: return 4
         }
     }
-}
+}*/

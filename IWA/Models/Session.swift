@@ -7,25 +7,18 @@
 
 import Foundation
 
-class Session: Encodable, Decodable, ObservableObject, Hashable {
+class Session: ObservableObject, Hashable {
     private(set) var id: String
-    private(set) var name: String
-    private(set) var location: String
-    private(set) var description: String?
-    private(set) var startDate: Date
-    private(set) var endDate: Date
-    private(set) var depositFee: Double
-    private(set) var depositFeeLimitBeforeDiscount: Double
-    private(set) var depositFeeDiscount: Double
-    private(set) var saleComission: Double
-    private(set) var managerId: String
-
-    // Convertisseur ISO 8601
-    static let dateFormatter: ISO8601DateFormatter = {
-        let formatter = ISO8601DateFormatter()
-        formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds] // Supporte les millisecondes
-        return formatter
-    }()
+    @Published var name: String
+    @Published var location: String
+    @Published var description: String?
+    @Published var startDate: Date
+    @Published var endDate: Date
+    @Published var depositFee: Double
+    @Published var depositFeeLimitBeforeDiscount: Double
+    @Published var depositFeeDiscount: Double
+    @Published var saleComission: Double
+    @Published var managerId: String
     
     init(from dto: SessionDTO) {
         self.id = dto._id
@@ -39,8 +32,8 @@ class Session: Encodable, Decodable, ObservableObject, Hashable {
         self.managerId = dto.managerId
 
         // Conversion des dates
-        self.startDate = Session.dateFormatter.date(from: dto.startDate) ?? Date()
-        self.endDate = Session.dateFormatter.date(from: dto.endDate) ?? Date()
+        self.startDate = JSONHelper.dateFormatter.date(from: dto.startDate) ?? Date()
+        self.endDate = JSONHelper.dateFormatter.date(from: dto.endDate) ?? Date()
         
     }
     

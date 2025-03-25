@@ -10,11 +10,11 @@ import Foundation
 import SwiftUI
 
 struct WithSessionSelectorModifier: ViewModifier {
+    @StateObject var sessionViewModel : SessionViewModel
     @State var isOnSessionView : Bool = false
-
     func body(content: Content) -> some View {
         VStack(spacing: 0) {
-            SessionSelectorView(isOnSessionView: isOnSessionView)
+            SessionSelectorView(sessionViewModel: sessionViewModel, isOnSessionView: isOnSessionView)
                 .frame(maxWidth: .infinity)
 
             content
@@ -24,7 +24,7 @@ struct WithSessionSelectorModifier: ViewModifier {
 }
 
 extension View {
-    func withSessionSelector(isOnSessionView : Bool = false) -> some View {
-        self.modifier(WithSessionSelectorModifier(isOnSessionView: isOnSessionView))
+    func withSessionSelector(sessionViewModel : SessionViewModel, isOnSessionView : Bool = false) -> some View {
+        self.modifier(WithSessionSelectorModifier(sessionViewModel: sessionViewModel, isOnSessionView: isOnSessionView))
     }
 }
