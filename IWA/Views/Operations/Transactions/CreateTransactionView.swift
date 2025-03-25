@@ -15,7 +15,7 @@ struct GameSaleOption: Identifiable {
 }
 
 struct CreateTransactionView: View {
-    @ObservedObject var transactionListViewModel: TransactionListViewModel
+    @StateObject var transactionListViewModel: TransactionListViewModel
     @EnvironmentObject var sellerListViewModel: SellerListViewModel
     @EnvironmentObject var clientListViewModel: ClientListViewModel
     @EnvironmentObject var sessionViewModel: SessionViewModel
@@ -44,7 +44,7 @@ struct CreateTransactionView: View {
         }
         let createTransactionDTO = CreateTransactionDTO(labelId: selectedGameId, sessionId: currentSession.id, sellerId: selectedSellerId, clientId: selectedClientId, transactionDate: Date())
         do {
-            try await transactionListViewModel.create(createTransactionDTO: createTransactionDTO)
+            try await transactionListViewModel.create(createTransactionDTO: createTransactionDTO, sessionId: currentSession.id)
             isLoading = false
             return true
         }
@@ -144,7 +144,6 @@ struct CreateTransactionView: View {
         }
         .onAppear {
             Task {
-                await sessionViewModel.loadSessions()
                 self.selectedClientId = clientListViewModel.clientList.first?.id ?? ""
                 self.selectedSellerId = sellerListViewModel.sellerList.first?.id ?? ""
                 self.gameOptions = updateSaleOptions(sellerId: self.selectedSellerId) ?? []

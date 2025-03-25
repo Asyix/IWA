@@ -27,15 +27,15 @@ struct HomeView: View {
             Button("Print Caca") {
                 action()
             }
-            NavigationLink(destination: CreateTransactionView(transactionListViewModel: transactionListViewModel)
+            NavigationLink(destination: TransactionListView(transactionListViewModel: transactionListViewModel)
+                .environmentObject(clientListViewModel)
                 .environmentObject(sessionViewModel)
-                .environmentObject(sellerListViewModel)
-                .environmentObject(clientListViewModel)) {
-                Text("Create transaction")
+                .environmentObject(sellerListViewModel)) {
+                Text("Ventes")
             }
             NavigationLink(destination: DepositListView(depositListViewModel: depositListViewModel)
                 .environmentObject(sessionViewModel)) {
-                Text("Create transaction")
+                Text("Dépôts")
             }
             //AddButton()
         }

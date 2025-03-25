@@ -98,7 +98,7 @@ struct UpdateDepositView: View {
                     .disabled(depositViewModel.sold)
 
                     Toggle(isOn: $depositViewModel.sold) {
-                        Text("Récupéré")
+                        Text("Vendu")
                     }
                     .disabled(true)
                 }

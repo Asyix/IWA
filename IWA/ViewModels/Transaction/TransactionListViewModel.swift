@@ -18,6 +18,24 @@ class TransactionListViewModel: ObservableObject {
     
     @Published var depositedGameOptions: [DepositedGameOption] = []
     
+    func loadAll(sessionId: String) async throws {
+        do {
+            try await loadTransactions(sessionId: sessionId)
+            try await loadTransactionInfos(sessionId: sessionId)
+        }
+        catch let requestError as RequestError {
+            // Transformer RequestError en LoginError
+            switch requestError {
+            case .notFoundError:
+                // Personnaliser le message pour les identifiants invalides
+                throw TransactionError.noTransactionsFound
+            default:
+                // Réutiliser les autres erreurs de RequestError
+                throw TransactionError.otherError(requestError.localizedDescription)
+            }
+        }
+    }
+    
     func loadTransactions(sessionId: String) async throws {
         do {
             let fetchedTransactions = try await TransactionService.getAllTransactions(sessionId: sessionId)
@@ -73,12 +91,13 @@ class TransactionListViewModel: ObservableObject {
         }
     }
     
-    func create(createTransactionDTO : CreateTransactionDTO) async throws {
+    func create(createTransactionDTO : CreateTransactionDTO, sessionId: String) async throws {
         do {
             let newTransaction = try await TransactionService.create(createTransactionDTO: createTransactionDTO)
             DispatchQueue.main.async {
                 self.transactionList.insert(TransactionViewModel(transaction: newTransaction), at: 0)
             }
+            try await self.loadTransactionInfos(sessionId: sessionId)
         }
         catch let requestError as RequestError {
             throw TransactionError.requestError(requestError) // Pass the caught RequestError

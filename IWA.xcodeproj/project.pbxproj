@@ -94,7 +94,6 @@
 		B78733CA2D90B7530005F478 /* UpdateClientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78733C92D90B7530005F478 /* UpdateClientView.swift */; };
 		B78733CF2D915C800005F478 /* TransactionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78733CE2D915C800005F478 /* TransactionListView.swift */; };
 		B78733D12D915C920005F478 /* CreateTransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78733D02D915C920005F478 /* CreateTransactionView.swift */; };
-		B78733D52D915CAF0005F478 /* TransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78733D42D915CAF0005F478 /* TransactionView.swift */; };
 		B78733D72D91756C0005F478 /* ClientRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78733D62D91756C0005F478 /* ClientRowView.swift */; };
 		B78733D92D9175AD0005F478 /* BluePurpleCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78733D82D9175AD0005F478 /* BluePurpleCard.swift */; };
 		B78733DB2D9176A20005F478 /* SellerRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78733DA2D9176A20005F478 /* SellerRowView.swift */; };
@@ -127,6 +126,7 @@
 		B78734172D92B6640005F478 /* RefundListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78734162D92B6640005F478 /* RefundListViewModel.swift */; };
 		B78734192D92B8CD0005F478 /* RefundListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78734182D92B8CD0005F478 /* RefundListView.swift */; };
 		B787341B2D92B9B70005F478 /* CreateRefundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B787341A2D92B9B70005F478 /* CreateRefundView.swift */; };
+		B787341D2D9311630005F478 /* DepositRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B787341C2D9311630005F478 /* DepositRowView.swift */; };
 		B7C47C1B2D818DF100489C4E /* IWAApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C47C1A2D818DF100489C4E /* IWAApp.swift */; };
 		B7C47C1D2D818DF100489C4E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C47C1C2D818DF100489C4E /* ContentView.swift */; };
 		B7C47C1F2D818DF300489C4E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7C47C1E2D818DF300489C4E /* Assets.xcassets */; };
@@ -249,7 +249,6 @@
 		B78733C92D90B7530005F478 /* UpdateClientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateClientView.swift; sourceTree = "<group>"; };
 		B78733CE2D915C800005F478 /* TransactionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListView.swift; sourceTree = "<group>"; };
 		B78733D02D915C920005F478 /* CreateTransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTransactionView.swift; sourceTree = "<group>"; };
-		B78733D42D915CAF0005F478 /* TransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionView.swift; sourceTree = "<group>"; };
 		B78733D62D91756C0005F478 /* ClientRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientRowView.swift; sourceTree = "<group>"; };
 		B78733D82D9175AD0005F478 /* BluePurpleCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluePurpleCard.swift; sourceTree = "<group>"; };
 		B78733DA2D9176A20005F478 /* SellerRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellerRowView.swift; sourceTree = "<group>"; };
@@ -282,6 +281,7 @@
 		B78734162D92B6640005F478 /* RefundListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefundListViewModel.swift; sourceTree = "<group>"; };
 		B78734182D92B8CD0005F478 /* RefundListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefundListView.swift; sourceTree = "<group>"; };
 		B787341A2D92B9B70005F478 /* CreateRefundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRefundView.swift; sourceTree = "<group>"; };
+		B787341C2D9311630005F478 /* DepositRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepositRowView.swift; sourceTree = "<group>"; };
 		B7C47C172D818DF100489C4E /* IWA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IWA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7C47C1A2D818DF100489C4E /* IWAApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IWAApp.swift; sourceTree = "<group>"; };
 		B7C47C1C2D818DF100489C4E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -711,7 +711,6 @@
 				B78733CE2D915C800005F478 /* TransactionListView.swift */,
 				B78733EA2D91984F0005F478 /* TransactionRowView.swift */,
 				B78733D02D915C920005F478 /* CreateTransactionView.swift */,
-				B78733D42D915CAF0005F478 /* TransactionView.swift */,
 			);
 			path = Transactions;
 			sourceTree = "<group>";
@@ -720,6 +719,7 @@
 			isa = PBXGroup;
 			children = (
 				B78733F02D91E7D80005F478 /* DepositListView.swift */,
+				B787341C2D9311630005F478 /* DepositRowView.swift */,
 				B78733F72D91EDE60005F478 /* DepositView.swift */,
 				B78733F92D91EEE20005F478 /* CreateDepositView.swift */,
 				B78733FB2D928CD40005F478 /* UpdateDepositView.swift */,
@@ -1029,6 +1029,7 @@
 				B787334B2D887DFC0005F478 /* GenericTextFieldStyle.swift in Sources */,
 				B78733C12D90AD360005F478 /* CreateClientView.swift in Sources */,
 				B78733CA2D90B7530005F478 /* UpdateClientView.swift in Sources */,
+				B787341D2D9311630005F478 /* DepositRowView.swift in Sources */,
 				B78733822D8C6D940005F478 /* ActionButtonStyle.swift in Sources */,
 				B78733D12D915C920005F478 /* CreateTransactionView.swift in Sources */,
 				B78734102D92B3E10005F478 /* Refund.swift in Sources */,
@@ -1041,7 +1042,6 @@
 				B78733C62D90AE920005F478 /* ClientListViewModel.swift in Sources */,
 				B78733DF2D9177240005F478 /* SellerDetailView.swift in Sources */,
 				B7C47C4F2D8191B600489C4E /* HomeView.swift in Sources */,
-				B78733D52D915CAF0005F478 /* TransactionView.swift in Sources */,
 				B78733912D8D9A7B0005F478 /* DepositedGame.swift in Sources */,
 				B787334D2D888A1F0005F478 /* GameView.swift in Sources */,
 				B78733382D85F7B10005F478 /* KeyChainHelper.swift in Sources */,

@@ -14,14 +14,12 @@ struct DepositListView: View {
     var body: some View {
         ZStack {
             ScrollView {
-               VStack(spacing: 8) {
-                   ForEach(depositListViewModel.depositList) { deposit in
-                       //NavigationLink(destination: GameView(gameViewModel: game)) {
-                       //vue détail
-                       //}
-                   }
-                   
-               }
+                VStack(spacing: 8) {
+                                    ForEach(depositListViewModel.depositList) { deposit in
+                                        DepositRowView(deposit: deposit)
+                                    }
+                                }
+                                .padding(.top)
                .padding(.top)
                
             
@@ -31,7 +29,8 @@ struct DepositListView: View {
                 Spacer()
                 HStack {
                     Spacer()
-                    AddButton(destination: CreateDepositView(depositListViewModel: depositListViewModel).environmentObject(sessionViewModel))
+                    AddButton(destination: CreateDepositView(depositListViewModel: depositListViewModel)
+                        .environmentObject(sessionViewModel))
                 }
                 .padding()
             }
