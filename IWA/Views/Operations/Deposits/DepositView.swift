@@ -102,7 +102,7 @@ struct DepositView: View {
                     }
                     
                     // Bouton pour rediriger vers la page de modification
-                    NavigationLink(destination: UpdateDepositView(depositViewModel: depositViewModel)
+                    /*NavigationLink(destination: UpdateDepositView(depositViewModel: depositViewModel)
                                     .environmentObject(sessionViewModel)) {
                         Text("Modifier")
                             .font(.title3)
@@ -113,7 +113,7 @@ struct DepositView: View {
                             .foregroundColor(.white)
                             .cornerRadius(10)
                     }
-                    .padding()
+                    .padding()*/
                 }
             }
             

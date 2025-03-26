@@ -25,6 +25,7 @@ struct CreateTransactionView: View {
     @State private var selectedSellerId: String = ""
     @State private var selectedGameId: String = ""
     @State private var gameOptions: [GameSaleOption] = []
+
     
     @State private var isLoading: Bool = false
     @State private var errorMessage: String?

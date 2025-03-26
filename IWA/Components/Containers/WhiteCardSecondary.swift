@@ -27,10 +27,3 @@ struct WhiteCardSecondary<Content: View>: View {
     }
 }
 
-struct WhiteCardSecondary_Previews: PreviewProvider {
-    static var previews: some View {
-        WhiteCardSecondary {
-            FeeBlock(title: "caca", value: "caca")
-        }
-    }
-}

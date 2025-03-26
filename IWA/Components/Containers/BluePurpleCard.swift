@@ -46,10 +46,4 @@ extension Color {
     }
 }
 
-struct BluePurpleCard_Previews: PreviewProvider {
-    static var previews: some View {
-        BluePurpleCard {
-            Text("caca")
-       }
-    }
-}
+

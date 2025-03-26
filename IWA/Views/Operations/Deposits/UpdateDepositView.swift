@@ -19,7 +19,7 @@ struct UpdateDepositView: View {
     init(depositViewModel: DepositViewModel) {
         self.depositViewModel = depositViewModel
         self._forSale = State(initialValue: depositViewModel.forSale)
-        self._pickedUp = State(initialValue: !depositViewModel.forSale)
+        self._pickedUp = State(initialValue: depositViewModel.pickedUp)
         self._salePrice = State(initialValue: String(depositViewModel.salePrice))
     }
     

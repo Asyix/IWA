@@ -18,10 +18,7 @@ struct NavigationBarModifier: ViewModifier {
                 // Bouton Profil
                 ToolbarItem(placement: .navigationBarTrailing) {
                     if authManager.isAuthenticated {
-                        NavigationLink(destination: ManagerListView(managerListViewModel: managerListViewModel).environmentObject(sessionViewModel)) {
-                            Image(systemName: "person.crop.circle")
-                                .foregroundColor(.blue)
-                        }
+                        
                     }
                     else {
                         NavigationLink(destination: LoginView()) {

@@ -10,10 +10,12 @@ import SwiftUI
 struct GameRowView: View {
     @ObservedObject var gameViewModel : GameViewModel
     @State var nbForSale: Int
+    @State var photoURL: URL?
     
     init(gameViewModel : GameViewModel) {
         self.gameViewModel = gameViewModel
-        nbForSale = gameViewModel.nbForSale
+        self._nbForSale = State(initialValue: gameViewModel.nbForSale)
+        self._photoURL = State(initialValue: gameViewModel.photoURL)
     }
     
     var body: some View {
@@ -84,6 +86,9 @@ struct GameRowView: View {
         }
         .onChange(of: gameViewModel.nbForSale) { newNb in
             nbForSale = newNb
+        }
+        .onChange(of: gameViewModel.photoURL) { newURL in
+            photoURL = newURL
         }
     }
     

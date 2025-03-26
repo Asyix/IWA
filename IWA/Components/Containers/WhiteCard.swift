@@ -26,11 +26,3 @@ struct WhiteCard<Content: View>: View {
         .frame(maxWidth: .infinity)
     }
 }
-
-struct WhiteCard_Previews: PreviewProvider {
-    static var previews: some View {
-        WhiteCard {
-            FeeBlock(title: "caca", value: "caca")
-        }
-    }
-}

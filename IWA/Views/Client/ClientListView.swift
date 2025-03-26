@@ -15,7 +15,6 @@ struct ClientListView: View {
     var body: some View {
         ZStack {
             ScrollView {
-                Text("caca")
                 VStack(spacing: 8) {
                     ForEach(clientListViewModel.clientList) { client in
                         NavigationLink(destination: ClientView(clientViewModel: client, clientListViewModel: clientListViewModel).environmentObject(sessionViewModel)) {

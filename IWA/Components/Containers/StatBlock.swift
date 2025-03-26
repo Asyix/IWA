@@ -27,8 +27,3 @@ struct StatBlock: View {
     }
 }
 
-struct StatBlock_Previews: PreviewProvider {
-    static var previews: some View {
-        StatBlock(title: "caca", value: 5)
-    }
-}

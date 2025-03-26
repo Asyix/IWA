@@ -14,9 +14,9 @@ class AppConfiguration {
 
     private init() {
         #if DEBUG
-        apiURL = "http://localhost:5000"  // Local development server
+        apiURL = "http://crafiwabackend.cluster-ig4.igpolytech.fr"  // Local development server
         #else
-        apiURL = "https://api.yourproductionurl.com"
+        apiURL = "http://crafiwabackend.cluster-ig4.igpolytech.fr"
         #endif
     }
 }
